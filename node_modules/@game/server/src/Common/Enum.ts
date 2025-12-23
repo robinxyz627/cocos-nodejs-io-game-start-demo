@@ -13,6 +13,7 @@ export enum EntityTypeEnum {
     Bullet1 = "Bullet1",
     Bullet2 = "Bullet2",
     Explosion = "Explosion",
+    Skeleton = "Skeleton",
 }
 
 export enum ApiMsgEnum { 

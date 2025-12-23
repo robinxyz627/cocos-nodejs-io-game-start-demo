@@ -49,7 +49,7 @@ sv.on("disconnection", (cn: Connection) => {
 
 
 sv.setApi(ApiMsgEnum.ApiPlayerJoin, (cn: Connection, data: IApiPlayerJoinReq): IApiPlayerJoinRes => {
-    const { nickName } = data;
+    const { nickName, attachment } = data;
     //判断连接是否存在（玩家反复登陆）
     let player: Player = null;
     if (cn.playerId) {
@@ -57,12 +57,12 @@ sv.setApi(ApiMsgEnum.ApiPlayerJoin, (cn: Connection, data: IApiPlayerJoinReq): I
         player.nickName = nickName;
         console.log(`玩家${player.id},修改昵称${nickName}`);
     } else {
-        player = PlayerManager.Instance.createPlayer({ nickName: nickName, connection: cn });
+        player = PlayerManager.Instance.createPlayer({ nickName: nickName, attachment: attachment, connection: cn });
         console.log(`玩家${player.id},昵称${nickName}加入游戏`);
     }
     PlayerManager.Instance.syncPlayers();
     return {
-        player: PlayerManager.Instance.getPlayerView(player)
+        id: player.id,
     };
 });
 

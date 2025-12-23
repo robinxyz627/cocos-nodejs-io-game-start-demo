@@ -1,68 +1,80 @@
-export interface IPlayer{
+export interface IPlayAttachment {
+    weaponId: number;
+    actorId: number;
+}
+
+export interface IPlayer {
+    id: number;
+    nickName: string;
+    rid: number;
+    attachment: IPlayAttachment;
+}
+
+export interface IPlayerListInfo {
     id: number;
     nickName: string;
     rid: number;
 }
 
-export interface IRoom{
+export interface IRoom {
     rid: number;
-    players:IPlayer[];
+    players: IPlayerListInfo[];
     master?: number;//房主id
 }
 
-export interface IApiPlayerJoinReq{
+export interface IApiPlayerJoinReq {
     nickName: string;
+    attachment: IPlayAttachment;
+}
+
+export interface IApiPlayerJoinRes {
+    id: number;
+}
+
+export interface IApiPlayerListReq {
 
 }
 
-export interface IApiPlayerJoinRes{
-    player: IPlayer;
+export interface IApiPlayerListRes {
+    players: IPlayerListInfo[];
 }
 
-export interface IApiPlayerListReq{
-
-}
-
-export interface IApiPlayerListRes{
-    players: IPlayer[];
-}
-
-export interface IApiRoomCreateReq{
+export interface IApiRoomCreateReq {
 
 }
 
-export interface IApiRoomCreateRes{
-    room:IRoom;
+export interface IApiRoomCreateRes {
+    room: IRoom;
 }
 
-export interface IApiRoomListReq{
-
-}
-
-export interface IApiRoomListRes{
-    list:IRoom[];
-}
-
-export interface IApiRoomJoinReq{
-    rid:number;
-}
-
-export interface IApiRoomJoinRes{
-    room:IRoom;
-}
-
-export interface IApiRoomLeaveReq{
+export interface IApiRoomListReq {
 
 }
 
-export interface IApiRoomLeaveRes{
+export interface IApiRoomListRes {
+    list: IRoom[];
+}
+
+export interface IApiRoomJoinReq {
+    rid: number;
+}
+
+export interface IApiRoomJoinRes {
+    room: IRoom;
+}
+
+export interface IApiRoomLeaveReq {
 
 }
 
-export interface IApiGameStartReq{
+export interface IApiRoomLeaveRes {
 
 }
 
-export interface IApiGameStartRes{
+export interface IApiGameStartReq {
+
+}
+
+export interface IApiGameStartRes {
 
 }

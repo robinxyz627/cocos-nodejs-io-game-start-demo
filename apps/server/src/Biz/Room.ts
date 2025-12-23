@@ -82,8 +82,8 @@ export class Room {
                 userId: player.id,
                 nickName: player.nickName,
                 hp: 100,
-                type: EntityTypeEnum.Actor1,
-                weaponType: EntityTypeEnum.Weapon1,
+                type: player.attachment.actor,
+                weaponType: player.attachment.weapon,
                 bulletType: EntityTypeEnum.Bullet2,
                 position: {
                     x: -150 + index * 100,

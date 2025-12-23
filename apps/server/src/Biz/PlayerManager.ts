@@ -12,8 +12,12 @@ export class PlayerManager extends Singleton {
     nextPlayerId = 1;
     players: Set<Player> = new Set();
     playerIdMap: Map<number, Player> = new Map();
-    createPlayer({ nickName, connection }: IApiPlayerJoinReq & { connection: Connection }) {
+    createPlayer(info: IApiPlayerJoinReq & { connection: Connection }) {
+        const { nickName, connection } = info;
         const player = new Player({ id: this.nextPlayerId++, nickName, connection });
+        if (info.attachment) {
+            player.setAttachment(info.attachment);
+        }
         connection.playerId = player.id;
         this.players.add(player);
         this.playerIdMap.set(player.id, player);
